@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import jwtInterceptor from "../utils/jwtInterceptor";
 
 const usePosts = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const usePosts = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+
+  jwtInterceptor();
 
   const getPosts = async (input) => {
     const { status, keywords, page } = input;
